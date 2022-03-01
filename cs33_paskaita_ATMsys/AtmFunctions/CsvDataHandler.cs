@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace cs33_paskaita_ATMsys
 {
     public class CsvDataHandler
     {
-        public void writedatatocsv(UserDataType userdatatype) // <-- metodas nenaudojamas
+        public void WriteDataToCsv(List<UserDataType> userDataList) // <-- metodas nenaudojamas
         {
             string path = $@"D:\GitHub\cs33_paskaita_ATMsys\cs33_paskaita_ATMsys\CsvDataRepository\UserData.csv";
-            string dataString = Environment.NewLine + $"{userdatatype.Name}, " +
-                                                      $"{userdatatype.LastName}, " +
-                                                      $"{userdatatype.UserID}, " +
-                                                      $"{userdatatype.Password}, " +
-                                                      $"{userdatatype.Balance}, " +
-                                                      $"{userdatatype.Operations}";
-            File.AppendAllText(path, dataString);
+            File.WriteAllText(path, string.Empty); // <-- išvalau rinkmėną, pridedu modifikuotą kontentą
+            userDataList.ForEach(userData => File.AppendAllText(path, $"{userData.Name}, " +
+                                                                      $"{userData.LastName}, " +
+                                                                      $"{userData.UserID}, " +
+                                                                      $"{userData.Password}, " +
+                                                                      $"{userData.Balance}, " +
+                                                                      $"{userData.OperationsLimit}, " +
+                                                                      $"{userData.LastFiveOperations.Select(x => string.Concat($"{x}> "))}" +
+                                                                      Environment.NewLine));
         }
         public List<UserDataType> ReadCsvData()
         {
@@ -34,6 +34,7 @@ namespace cs33_paskaita_ATMsys
 
                 cardData.Add(UserParser(tempCache));
             }
+            csvLineReader.Close();
             return cardData;
         }
         public UserDataType UserParser(string[] tempCache)
@@ -44,7 +45,8 @@ namespace cs33_paskaita_ATMsys
             user.UserID = tempCache[2];
             user.Password = tempCache[3];
             user.Balance = decimal.Parse(tempCache[4]);
-            user.Operations = tempCache[5].Split("> ").ToList();
+            user.OperationsLimit = int.Parse(tempCache[5]);
+            user.LastFiveOperations = tempCache[6].Split("> ").ToList();
 
             return user;
         }

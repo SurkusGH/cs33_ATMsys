@@ -142,14 +142,17 @@ namespace cs33_paskaita_ATMsys
                 AtmMonitor.Clear();
                 AtmMonitor.AppendText(ToolTipsSys.CardInsertTooltip());
             }
+
             else
             {
                 AtmMonitor.AppendText($"\nSlaptažodis neteisingas liko { 3 - Counter}" +
                                       $"\n   įvestis: ");
-            }
-            if (Counter == 3)
-            {
-                userList = PasswordAuthentication.CardBlocking(userList, CardIndicator);
+                if (Counter == 3)
+                {
+                    PasswordAuthentication.CardBlocking(userList, CardIndicator);
+                    AtmMonitor.AppendText($"\n(!) KORTELĖ BLOKUOTA");
+                    Environment.Exit(0);
+                }
             }
         }
     }
