@@ -32,7 +32,8 @@ namespace cs33_paskaita_ATMsys.GUI
                              $"\n\n\n               Skaitinė įvestis -->" +
                              $"\n\n               Skaitinė įvestis -->" +
                              $"\n\n               Skaitinė įvestis -->" +
-                             $"\n\n               Skaitinė įvestis -->";
+                             $"\n\n               Skaitinė įvestis -->" +
+                             $"\n               ";
             return ToolTip;
         }
     }

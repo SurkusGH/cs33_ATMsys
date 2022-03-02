@@ -51,6 +51,8 @@
             this.Card4 = new System.Windows.Forms.Button();
             this.TurnOn = new System.Windows.Forms.Button();
             this.TurnOff = new System.Windows.Forms.Button();
+            this.Withdraw = new System.Windows.Forms.Button();
+            this.Backspace = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AtmMonitor
@@ -77,14 +79,16 @@
             // 
             // EnterButton
             // 
+            this.EnterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.EnterButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EnterButton.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.EnterButton.Location = new System.Drawing.Point(266, 230);
+            this.EnterButton.ForeColor = System.Drawing.Color.Green;
+            this.EnterButton.Location = new System.Drawing.Point(266, 202);
             this.EnterButton.Name = "EnterButton";
-            this.EnterButton.Size = new System.Drawing.Size(81, 23);
+            this.EnterButton.Size = new System.Drawing.Size(23, 23);
             this.EnterButton.TabIndex = 6;
-            this.EnterButton.Text = "Tvirtinti";
-            this.EnterButton.UseVisualStyleBackColor = true;
+            this.EnterButton.Text = "🔑";
+            this.EnterButton.UseVisualStyleBackColor = false;
             this.EnterButton.Click += new System.EventHandler(this.EnterButton_Click);
             // 
             // CheckBalance
@@ -97,6 +101,7 @@
             this.CheckBalance.TabIndex = 7;
             this.CheckBalance.Text = "Likutis";
             this.CheckBalance.UseVisualStyleBackColor = true;
+            this.CheckBalance.Click += new System.EventHandler(this.CheckBalance_Click);
             // 
             // LastOperations
             // 
@@ -108,6 +113,7 @@
             this.LastOperations.TabIndex = 8;
             this.LastOperations.Text = "Operacijos";
             this.LastOperations.UseVisualStyleBackColor = true;
+            this.LastOperations.Click += new System.EventHandler(this.LastOperations_Click);
             // 
             // CashOut
             // 
@@ -317,11 +323,39 @@
             this.TurnOff.UseVisualStyleBackColor = false;
             this.TurnOff.Click += new System.EventHandler(this.TurnOff_Click);
             // 
+            // Withdraw
+            // 
+            this.Withdraw.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Withdraw.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Withdraw.Location = new System.Drawing.Point(266, 230);
+            this.Withdraw.Name = "Withdraw";
+            this.Withdraw.Size = new System.Drawing.Size(81, 23);
+            this.Withdraw.TabIndex = 26;
+            this.Withdraw.Text = "Grįninti";
+            this.Withdraw.UseVisualStyleBackColor = true;
+            this.Withdraw.Click += new System.EventHandler(this.Withdraw_Click);
+            // 
+            // Backspace
+            // 
+            this.Backspace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.Backspace.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Backspace.Font = new System.Drawing.Font("Segoe UI Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Backspace.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Backspace.Location = new System.Drawing.Point(324, 202);
+            this.Backspace.Name = "Backspace";
+            this.Backspace.Size = new System.Drawing.Size(23, 24);
+            this.Backspace.TabIndex = 27;
+            this.Backspace.Text = "<";
+            this.Backspace.UseVisualStyleBackColor = false;
+            this.Backspace.Click += new System.EventHandler(this.Backspace_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 330);
+            this.Controls.Add(this.Backspace);
+            this.Controls.Add(this.Withdraw);
             this.Controls.Add(this.TurnOff);
             this.Controls.Add(this.TurnOn);
             this.Controls.Add(this.Card4);
@@ -375,5 +409,7 @@
         private System.Windows.Forms.Button Card4;
         private System.Windows.Forms.Button TurnOn;
         private System.Windows.Forms.Button TurnOff;
+        private System.Windows.Forms.Button Withdraw;
+        private System.Windows.Forms.Button Backspace;
     }
 }
